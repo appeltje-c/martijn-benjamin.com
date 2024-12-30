@@ -1,9 +1,10 @@
-import Header from "./components/Header";
-import { BrowserRouter, Route, Routes } from "react-router";
-import Resume from "./screens/resume";
-import About from "./screens/about";
-import Projects from "./screens/projects";
-import Contact from "./screens/contact";
+import Header from "./components/Header"
+import { BrowserRouter, Route, Routes } from "react-router"
+import Contact from "./screens/contact"
+import Home from "./screens/home"
+import Creations from "./screens/creations"
+import Curriculum from "./screens/curriculum"
+import Footer from "./components/Footer"
 
 function App() {
 
@@ -11,11 +12,12 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/resume" element={<Resume />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/creations" element={<Creations />} />
+        <Route path="/curriculum" element={<Curriculum />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

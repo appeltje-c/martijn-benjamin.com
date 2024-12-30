@@ -14,7 +14,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline>
-        <Tinker hidden={true} />
+        <div style={{ position: 'fixed', bottom: 20, left: 20, zIndex: 10000 }}>
+          <Tinker hidden={false} collapsed fill />
+        </div>
         <App />
       </CssBaseline>
     </ThemeProvider>
