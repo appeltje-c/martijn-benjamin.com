@@ -159,3 +159,6 @@ export default function Imperial() {
         </>
     )
 }
+
+
+useGLTF.preload('/models/imperial.glb')

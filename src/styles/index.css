@@ -14,10 +14,6 @@ body,
     overflow: hidden;
 }
 
-.r3f {
-    touch-action: none;
-}
-
 #root {
     overflow: auto;
 }
@@ -27,7 +23,6 @@ body,
     top: 0;
     left: 0;
     overflow-y: auto;
-    scroll-snap-type: y proximity;
 }
 
 .scroll>div {
@@ -42,20 +37,6 @@ body {
     background: radial-gradient(circle at bottom center, #212121 0%, #101010 80%);
     font-family: "Inter var", sans-serif;
     -webkit-font-smoothing: antialiased;
-}
-
-.caption {
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    margin: 80px;
-    color: white;
-    font-size: 8em;
-    font-weight: 100;
-    line-height: 1em;
-    font-variant-numeric: tabular-nums;
-    -webkit-font-smoothing: auto;
 }
 
 .dot {
@@ -83,83 +64,20 @@ body {
     margin-bottom: 0.25em;
 }
 
-@media only screen and (max-width: 1000px) {
-    .caption {
-        font-size: 4em;
-    }
-}
-
 @media only screen and (max-width: 800px) {
-    .caption {
-        font-size: 3em;
-    }
-
     .dot>h1 {
         font-size: 3em;
     }
 }
 
 @media only screen and (max-width: 700px) {
-    .caption {
-        font-size: 2em;
-    }
-
     .dot>h1 {
         font-size: 3em;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .caption {
-        font-size: 1em;
-    }
-
     .dot>h1 {
         font-size: 3em;
     }
-}
-
-.scrollDown {
-	width: 60px;
-	height: 60px;
-	border: 2px solid #333;
-	border-radius: 50%;
-	position: relative;
-	animation: down 1.5s infinite;
-	-webkit-animation: down 1.5s infinite;
-	&::before {
-		content: '';
-		position: absolute;
-		top: 15px;
-		left: 18px;
-		width: 18px;
-		height: 18px;
-		border-left: 2px solid #333;
-  	border-bottom: 2px solid #333;
-		transform: rotate(-45deg);
-	}
-}
-
-@keyframes down {
-	0% {
-		transform: translate(0);
-	}
-	20% {
-		transform: translateY(15px);
-	}
-	40% {
-		transform: translate(0);
-	}
-}
-
-@-webkit-keyframes down {
-	0% {
-		transform: translate(0);
-	}
-	20% {
-		transform: translateY(15px);
-	}
-	40% {
-		transform: translate(0);
-	}
 }

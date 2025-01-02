@@ -1,7 +1,8 @@
 import { Environment } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { Suspense, useRef } from "react"
-import Overlay from "./overlay"
+import Timeline from "../components/timeline"
+import Overlay from "../components/timeline/overlay"
 
 export default function Home() {
 
@@ -11,9 +12,10 @@ export default function Home() {
 
     return (
         <>
-            <Canvas shadows eventPrefix="client">
+            <Canvas shadows eventSource={document.getElementById("root") ?? undefined} eventPrefix="client">
                 <ambientLight intensity={1} />
                 <Suspense fallback={null}>
+                    <Timeline scroll={scroll} />
                     <Environment preset="city" />
                 </Suspense>
             </Canvas>

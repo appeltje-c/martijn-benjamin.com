@@ -1,10 +1,8 @@
-import { AppBar, Button, IconButton, Toolbar } from '@mui/material'
+import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material'
 import { useNavigate } from 'react-router'
-import ViewInArIcon from '@mui/icons-material/ViewInArTwoTone';
 import { useTinker } from 'tinker-tools';
 
 const pages = [
-    { title: 'Creations', path: '/creations' },
     { title: 'Curriculum', path: '/curriculum' },
     { title: 'Contact', path: '/contact' }
 ]
@@ -15,7 +13,7 @@ function Header() {
 
     const { buttonColor, iconColor } = useTinker({
         buttonColor: '#fff',
-        iconColor: '#ff4d59'
+        iconColor: '#00ff11'
     })
 
     return (
@@ -32,7 +30,7 @@ function Header() {
                     ))
                 }
                 <IconButton onClick={() => navigate('/')} sx={{ mr: 2 }} >
-                    <ViewInArIcon sx={{ color: iconColor, fontSize: '3rem' }} />
+                    <Typography sx={{ color: iconColor, fontSize: '1.2rem' }}>MB</Typography>
                 </IconButton>
             </Toolbar>
         </AppBar>

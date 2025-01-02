@@ -2,7 +2,6 @@ import Header from "./components/Header"
 import { BrowserRouter, Route, Routes } from "react-router"
 import Contact from "./screens/contact"
 import Home from "./screens/home"
-import Creations from "./screens/creations"
 import Curriculum from "./screens/curriculum"
 import Footer from "./components/Footer"
 
@@ -13,7 +12,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/creations" element={<Creations />} />
         <Route path="/curriculum" element={<Curriculum />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

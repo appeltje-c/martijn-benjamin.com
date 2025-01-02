@@ -23,4 +23,3 @@ Animations showing the “assembly” of your projects step-by-step.
 * gears
 * rocket / spaceship
 * headset
-* 
