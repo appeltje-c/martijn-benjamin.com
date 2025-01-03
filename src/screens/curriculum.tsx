@@ -1,6 +1,6 @@
-import { Canvas } from "@react-three/fiber";
-import Imperial from "../components/resume/Imperial";
-import TSparx from "../components/resume/tsparx";
+import { Canvas } from '@react-three/fiber'
+// import Imperial from "../components/curriculum/imperial"
+import TSparx from '../components/curriculum/tsparx'
 
 export default function Curriculum() {
 
