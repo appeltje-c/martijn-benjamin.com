@@ -1,9 +1,9 @@
 import { useGLTF, useTexture, useAnimations, PresentationControls } from "@react-three/drei"
-import { useTinker } from "tinker-tools"
 import { useEffect, useRef } from "react"
 import { Group } from "three"
 import { useThree } from "@react-three/fiber"
 import { ImperialModel } from "../../types"
+import { presentation } from "../../config"
 
 export default function Imperial() {
 
@@ -11,40 +11,25 @@ export default function Imperial() {
     const { nodes, animations } = useGLTF('./models/imperial.glb') as ImperialModel
     const texture = useTexture('./texture/imperial.jpg')
     texture.flipY = false
-
     const { camera } = useThree();
     const { actions } = useAnimations(animations, group)
-    const { rotation, polar, azimuth } = useTinker({
-        rotation: {
-            value: [0.4, -1, 0],
-            step: 0.1
-        },
-        polar: {
-            value: [-0.4, 0.2],
-            step: 0.1
-        },
-        azimuth: {
-            value: [-1.0, 1.0],
-            step: 0.1
-        }
-    })
 
     useEffect(() => {
-
+        
         camera.position.set(0.8, 0.2, 4)
+
         actions['Printing']?.play()
         actions['Jump']?.play()
         actions['Ringing']?.play()
-
     }, [])
 
     return (
         <>
             <PresentationControls
                 global
-                rotation={rotation}
-                polar={polar}
-                azimuth={azimuth}
+                rotation={presentation.rotation}
+                polar={presentation.polar}
+                azimuth={presentation.azimuth}
                 snap={{ mass: 4, tension: 400 }}
                 config={{ mass: 1, tension: 400 }}>
 
@@ -143,6 +128,5 @@ export default function Imperial() {
         </>
     )
 }
-
 
 useGLTF.preload('/models/imperial.glb')
