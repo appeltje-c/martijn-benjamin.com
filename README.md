@@ -1,25 +1,11 @@
-# My personal website
+# Learn
 
-## Theme
+## Theatre.js
 
-The Mind of an Engineer
+https://github.com/theatre-js/theatre 
 
-Inspiration:
-A visualization of your creative and technical thought process.
+Crash course:
+https://www.youtube.com/watch?v=icR9EIS1q34&ab_channel=TheatreJS
 
-Visual Style:
-Abstract shapes and pathways (inspired by neural networks or circuits).
-Dynamic layouts that simulate brainstorming—bubbles, clusters, and connections.
-
-Features:
-Interactive pathways where users can click on nodes to explore projects or ideas.
-Animations showing the “assembly” of your projects step-by-step.
-
-## Interesting objects for the home page
-
-* robot
-* telescope
-* planet with rings
-* gears
-* rocket / spaceship
-* headset
+Docs
+https://www.theatrejs.com/docs/latest/manual/projects

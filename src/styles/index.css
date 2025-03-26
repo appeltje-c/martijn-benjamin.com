@@ -9,14 +9,8 @@ body,
     height: 100%;
     margin: 0;
     padding: 0;
-    user-select: none;
-    overflow: hidden;
 }
 
-#root {
-    overflow: auto;
-}
-
-.r3f {
-    touch-action: none;
+body {
+    background: #303035;
 }

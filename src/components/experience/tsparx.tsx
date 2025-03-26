@@ -1,10 +1,8 @@
-import { useGLTF, useTexture, useAnimations, PresentationControls, Text } from "@react-three/drei"
+import { useGLTF, useTexture, useAnimations, Text } from "@react-three/drei"
 import { useEffect, useRef, useState } from "react"
 import { AnimationAction, Group } from "three"
-import { useThree } from "@react-three/fiber"
 import { TSparxModel } from "../../types"
 import { LoopOnce } from "three"
-import { presentation } from "../../config"
 
 export default function TSparx() {
 
@@ -12,7 +10,6 @@ export default function TSparx() {
     const { nodes, animations } = useGLTF('./models/tsparx.glb') as TSparxModel
     const texture = useTexture('./texture/tsparx.jpg')
     texture.flipY = false
-    const { camera } = useThree()
     const { actions } = useAnimations(animations, group)
     const [antennaActive, setAntennaActive] = useState(true)
 
@@ -32,7 +29,6 @@ export default function TSparx() {
 
     useEffect(() => {
 
-        camera.position.set(0.8, 0.2, 4)
         actions['BubblesAction']?.play()
         actions['FinAction']?.play()
 
@@ -49,102 +45,92 @@ export default function TSparx() {
     }, [])
 
     return (
-        <PresentationControls
-            global
-            rotation={presentation.rotation}
-            polar={presentation.polar}
-            azimuth={presentation.azimuth}
-            snap={{ mass: 4, tension: 400 }}
-            config={{ mass: 1, tension: 400 }}>
+        <group position={[0, -3, 0]} rotation={[0, -1, 0]} ref={group} dispose={null}>
 
-            <group ref={group} dispose={null}>
+            <mesh
+                name="Antennas"
+                geometry={nodes.Antennas.geometry}
+                position={[-1.247, 0.544, -0.343]}
+                rotation={[0.171, 0.41, 0]}>
+                <meshBasicMaterial map={texture} />
+            </mesh>
 
-                <mesh
-                    name="Antennas"
-                    geometry={nodes.Antennas.geometry}
-                    position={[-1.247, 0.544, -0.343]}
-                    rotation={[0.171, 0.41, 0]}>
-                    <meshBasicMaterial map={texture} />
-                </mesh>
-
-                <group name="Phone">
-
-                    <mesh
-                        geometry={nodes.Phone.geometry}
-                        position={[0.098, 0.662, -1.029]}
-                        rotation={[1.02, 0.314, -1.306]}>
-                        <meshBasicMaterial map={texture} />
-                    </mesh>
-
-                    <mesh
-                        geometry={nodes.Buttons.geometry}
-                        position={[0.154, 0.57, -0.966]}
-                        rotation={[1.02, 0.314, -1.306]}>
-                        <meshBasicMaterial map={texture} />
-                    </mesh>
-
-                    <mesh
-                        geometry={nodes.Body.geometry}
-                        position={[0.099, 0.663, -1.029]}
-                        rotation={[1.02, 0.314, -1.306]}>
-                        <meshBasicMaterial map={texture} />
-
-                    </mesh>
-
-                    <mesh
-                        geometry={nodes.Screen_Cover.geometry}
-                        position={[0.097, 0.723, -1.06]}
-                        rotation={[1.02, 0.314, -1.306]}>
-                        <meshBasicMaterial map={texture} />
-                    </mesh>
-
-                    <mesh
-                        geometry={nodes.Screen.geometry}
-                        position={[0.095, 0.749, -1.073]}
-                        rotation={[1.02, 0.314, -1.306]}
-                        scale={1.1}>
-
-                        {
-                            antennaActive &&
-                            <Text scale={0.04} rotation={[-1, 0, 0]} position={[0, 0.02, 0]} color="black">
-                                NET 1D
-                            </Text>
-                        }
-
-                        {
-                            !antennaActive &&
-                            <Text scale={0.06} rotation={[-1, 0, 0]} position={[0, 0.02, 0]} color="black">
-                                Yay!
-                            </Text>
-                        }
-                        <meshBasicMaterial map={texture} />
-                    </mesh>
-
-                </group>
+            <group name="Phone">
 
                 <mesh
-                    name="Bubbles"
-                    geometry={nodes.Bubbles.geometry}
-                    position={[0.846, 0.187, 1.106]}
-                    rotation={[-Math.PI, 1.119, -Math.PI]}>
+                    geometry={nodes.Phone.geometry}
+                    position={[0.098, 0.662, -1.029]}
+                    rotation={[1.02, 0.314, -1.306]}>
                     <meshBasicMaterial map={texture} />
                 </mesh>
 
                 <mesh
-                    name="Fin"
-                    geometry={nodes.Fin.geometry}
-                    position={[0.994, 0.155, 1.205]}
-                    rotation={[0, 0.452, 0]}>
+                    geometry={nodes.Buttons.geometry}
+                    position={[0.154, 0.57, -0.966]}
+                    rotation={[1.02, 0.314, -1.306]}>
                     <meshBasicMaterial map={texture} />
                 </mesh>
 
                 <mesh
-                    geometry={nodes.Merged.geometry}>
+                    geometry={nodes.Body.geometry}
+                    position={[0.099, 0.663, -1.029]}
+                    rotation={[1.02, 0.314, -1.306]}>
+                    <meshBasicMaterial map={texture} />
+
+                </mesh>
+
+                <mesh
+                    geometry={nodes.Screen_Cover.geometry}
+                    position={[0.097, 0.723, -1.06]}
+                    rotation={[1.02, 0.314, -1.306]}>
                     <meshBasicMaterial map={texture} />
                 </mesh>
+
+                <mesh
+                    geometry={nodes.Screen.geometry}
+                    position={[0.095, 0.749, -1.073]}
+                    rotation={[1.02, 0.314, -1.306]}
+                    scale={1.1}>
+
+                    {
+                        antennaActive &&
+                        <Text scale={0.04} rotation={[-1, 0, 0]} position={[0, 0.02, 0]} color="black">
+                            NET 1D
+                        </Text>
+                    }
+
+                    {
+                        !antennaActive &&
+                        <Text scale={0.06} rotation={[-1, 0, 0]} position={[0, 0.02, 0]} color="black">
+                            Yay!
+                        </Text>
+                    }
+                    <meshBasicMaterial map={texture} />
+                </mesh>
+
             </group>
 
-        </PresentationControls>
+            <mesh
+                name="Bubbles"
+                geometry={nodes.Bubbles.geometry}
+                position={[0.846, 0.187, 1.106]}
+                rotation={[-Math.PI, 1.119, -Math.PI]}>
+                <meshBasicMaterial map={texture} />
+            </mesh>
+
+            <mesh
+                name="Fin"
+                geometry={nodes.Fin.geometry}
+                position={[0.994, 0.155, 1.205]}
+                rotation={[0, 0.452, 0]}>
+                <meshBasicMaterial map={texture} />
+            </mesh>
+
+            <mesh
+                geometry={nodes.Merged.geometry}>
+                <meshBasicMaterial map={texture} />
+            </mesh>
+        </group>
     )
 }
 
